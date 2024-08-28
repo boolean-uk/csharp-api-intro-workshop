@@ -16,5 +16,18 @@ namespace workshop.wwwapi.Data
         {
             return _jokes;
         }
+        public static Joke? GetAJoke(int id)
+        {
+            return _jokes.FirstOrDefault(j => j.Id==id);
+        }
+        public static Joke GetRandomJoke()
+        {
+            Joke result = null;
+            Random random = new Random();
+            int index = random.Next(0,_jokes.Count-1);
+            return _jokes[index];
+            
+        }
+        
     }
 }
