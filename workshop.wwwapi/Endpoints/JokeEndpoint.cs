@@ -11,6 +11,7 @@ namespace workshop.wwwapi.Endpoints
             jokes.MapGet("/", GetAllJokes);
             jokes.MapGet("/{id}", GetAJoke);
             jokes.MapGet("/random", GetRandomJoke);
+            jokes.MapGet("/long", GetLongJokes);
         }
 
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -18,6 +19,8 @@ namespace workshop.wwwapi.Endpoints
         {
             return TypedResults.Ok(JokeData.GetJokes());
         }
+
+
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public static IResult GetAJoke(int id)
@@ -25,11 +28,22 @@ namespace workshop.wwwapi.Endpoints
             var result = JokeData.GetAJoke(id);
             return result != null ? TypedResults.Ok(result) : TypedResults.NotFound();
         }
+
+
+
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public static IResult GetRandomJoke()
         {
             var result = JokeData.GetRandomJoke();
+            return result != null ? TypedResults.Ok(result) : TypedResults.NotFound();
+        }
+
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public static IResult GetLongJokes()
+        {
+            var result = JokeData.GetLongJokes();
             return result != null ? TypedResults.Ok(result) : TypedResults.NotFound();
         }
 

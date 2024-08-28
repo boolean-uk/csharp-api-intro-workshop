@@ -28,6 +28,11 @@ namespace workshop.wwwapi.Data
             return _jokes[index];
             
         }
+        public static List<Joke> GetLongJokes()
+        {
+            return _jokes.Where(j => j.Text.Length > 50).ToList();
+
+        }
         
     }
 }
