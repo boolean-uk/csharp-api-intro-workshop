@@ -1,3 +1,4 @@
+using workshop.wwwapi.Data;
 using workshop.wwwapi.Endpoints;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,6 +20,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.ConfigureJokeEndpoint();
+
+JokeData.Seed();
 
 app.Run();
 
